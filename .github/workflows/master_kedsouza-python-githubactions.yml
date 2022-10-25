@@ -32,13 +32,16 @@ jobs:
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
+      - name: tar antenv folder 
+        run: tar -cv antenv antenv.tar
+      
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
           name: python-app
           path: |
             . 
-            !venv/
+            !antenv/
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,6 +56,9 @@ jobs:
         with:
           name: python-app
           path: .
+      
+      - name: Unpack antenv.tar
+        run: tar -xf antenv.tar antenv
           
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
