@@ -1,5 +1,4 @@
 from flask import Flask
-from gdal import gdal
 
 app = Flask(__name__)
 
