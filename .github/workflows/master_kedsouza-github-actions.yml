@@ -24,7 +24,7 @@ jobs:
 
       - name: Create and start virtual environment
         run: |
-          python -m venv antenv
+          python -m venv venv
           source venv/bin/activate
       
       - name: Install dependencies
@@ -35,9 +35,9 @@ jobs:
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
-          name: python-app
           path: |
             . 
+            !venv/
             
 
   deploy:
