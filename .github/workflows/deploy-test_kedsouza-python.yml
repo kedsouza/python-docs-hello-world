@@ -35,7 +35,9 @@ jobs:
           pwd
           path=$(pwd)
           cd ..
-          tar -cvf app.tar $path
+          tar -cf app.tar $path
+          ls -la
+          cp app.tar $path
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
