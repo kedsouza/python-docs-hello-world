@@ -62,7 +62,8 @@ jobs:
       - name: Extract Tar
         run: |
           ls -la
-          tar -xfv python-app.tar
+          tar -xf app.tar
+          ls -la
         
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
