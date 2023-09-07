@@ -58,7 +58,10 @@ jobs:
         with:
           name: python-app
           path: .
-          
+
+      - name: Extract Tar
+        run: tar -xfv app.tar
+        
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
