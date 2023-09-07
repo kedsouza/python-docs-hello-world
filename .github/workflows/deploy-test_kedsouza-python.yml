@@ -33,7 +33,7 @@ jobs:
       - name: Tar Artifacts to preserve symlinks.
         run: |
           pwd
-          path=pwd
+          path=$(pwd)
           cd ..
           tar -cvf app.tar $path
       
