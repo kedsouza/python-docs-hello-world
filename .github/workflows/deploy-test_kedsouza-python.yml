@@ -32,9 +32,10 @@ jobs:
 
       - name: Tar Artifacts to preserve symlinks.
         run: |
-          path = $(pwd)
+          pwd
+          path=pwd
           cd ..
-          tar -cvf app.tar path
+          tar -cvf app.tar $path
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
