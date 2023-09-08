@@ -37,7 +37,6 @@ jobs:
           tar -czf app.tar.gz $base
           cp app.tar.gz $base
           ls -la 
-          tree
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
@@ -62,7 +61,7 @@ jobs:
       - name: Extract Tar
         run: |
           ls -la
-          tar -xfc app.tar.gz
+          tar -xf app.tar.gz
           ls -la
         
       - name: 'Deploy to Azure Web App'
