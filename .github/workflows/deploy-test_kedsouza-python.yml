@@ -34,7 +34,10 @@ jobs:
         run: |
           base=$(basename $PWD)
           cd ..
-          tar -czf $app.tar.gz $base
+          tar -czf app.tar.gz $base
+          cp app.tar.gz $base
+          ls -la 
+          tree
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
