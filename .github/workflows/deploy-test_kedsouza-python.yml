@@ -64,7 +64,7 @@ jobs:
         run: |
           ls -la
           tar -xf app.tar.gz
-          ls -la
+          rm app.tar.gz
         
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
