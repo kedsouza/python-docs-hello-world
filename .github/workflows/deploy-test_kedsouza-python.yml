@@ -32,10 +32,12 @@ jobs:
 
       - name: Tar Artifacts to increase upload time
         run: |
-          base=$(basename $PWD)
-          cd ..
-          tar -czf app.tar.gz $base
-          cp app.tar.gz $base
+          touch app.tar.gz
+          tar -czf app.tar.gz --exclude=app.tar.gz .
+        
+          # base=$(basename $PWD)
+          # tar -czf app.tar.gz $base 
+          # cp app.tar.gz $base
           ls -la 
       
       - name: Upload artifact for deployment jobs
