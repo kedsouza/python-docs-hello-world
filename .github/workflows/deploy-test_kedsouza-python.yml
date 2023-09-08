@@ -30,20 +30,17 @@ jobs:
           
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
-      - name: Tar Artifacts to preserve symlinks.
+      - name: Tar Artifacts to increase upload time
         run: |
-          pwd
-          path=$(pwd)
+          base=$(basename $PWD)
           cd ..
-          tar -cf app.tar $path
-          ls -la
-          cp app.tar $path
+          tar -czf $app.tar.gz $base
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
           name: python-app
-          path: app.tar
+          path: app.tar.gz
 
   deploy:
     runs-on: ubuntu-latest
@@ -62,7 +59,7 @@ jobs:
       - name: Extract Tar
         run: |
           ls -la
-          tar -xf app.tar
+          tar -xfc app.tar.gz
           ls -la
         
       - name: 'Deploy to Azure Web App'
